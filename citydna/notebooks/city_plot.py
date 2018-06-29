@@ -12,7 +12,7 @@ LEGEND_TEXT_COLOR = "#a29bfe"
 def plot_city_paths(plot, champion, contender):
     
     line_square = plot.line('x', 'y', source=champion, legend=" CHAMPION PATH ", line_color="#a29bfe", line_alpha=1.0)
-    line_circle = plot.line('x', 'y', source=contender, legend = " CONTENDER PATH ", line_color="#a29bfe", line_dash="10 2", line_alpha=0.6)
+    line_circle = plot.line('x', 'y', source=contender, legend = " CONTENDER PATH ", line_color="#a29bfe", line_dash="10 2", line_alpha=1.0)
     
     plot.square('x', 'y', source=champion, legend=" CHAMPION PATH ",
         size=8, fill_color="#e84393", line_color="#fd79a8", fill_alpha=1.0, line_width=1)
@@ -38,13 +38,14 @@ def stylize_plot(plot):
     plot.legend.location = "top_center"
 
 def preliminary_city_figure(xr, yr):
-    return figure(x_range=[xr[0], xr[1]], y_range=[yr[0], yr[1] + 1.0],
+    x = xr[1] + xr[1] - xr[0]
+    return figure(x_range=[xr[0], x], y_range=[yr[0], yr[1] + 1.0],
         plot_height=500, plot_width=900, x_axis_location=None, y_axis_location=None, tools="")
 
-def extract_data(cities, midx):
+def extract_data(cities, x):
     y = [city.y for city in cities]
     x1 = [city.x for city in cities]
-    x2 = [city.x + midx for city in cities]
+    x2 = [city.x + x for city in cities]
     return x1, x2, y 
 
 def change_path(order, source, x, y):
@@ -55,8 +56,7 @@ class CityPlot:
             
     def __init__(self, cities, xr, yr):
         
-        midx = xr[0] + (xr[1] - xr[0]) / 2        
-        self.x1, self.x2, self.y = extract_data(cities, midx)
+        self.x1, self.x2, self.y = extract_data(cities, xr[1] - xr[0])
         
         self.plot = preliminary_city_figure(xr, yr)
                 
