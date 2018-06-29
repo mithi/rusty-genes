@@ -17,3 +17,11 @@ citydna/notebooks/\.ipynb_checkpoints/
 *.pyc
 
 citydna/target/debug/
+
+citydna/data/\.DS_Store
+
+citydna/data/cities/\.DS_Store
+
+citydna/data/output/\.DS_Store
+
+citydna/notebooks/\.DS_Store
