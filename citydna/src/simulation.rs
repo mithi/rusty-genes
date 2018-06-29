@@ -1,15 +1,21 @@
 use rand::{thread_rng, Rng};
 use super::*; 
+use helper::print_vec;
 
 pub struct Simulation {
+
     iterations: usize,
+
     crossover_probability: f64,
     mutation_probability: f64,
     population_size: usize, 
+
     number_of_cities: usize,
     cities: Vec<City>,
+
     number_of_mutations: usize,
     number_of_crossovers: usize,
+
     pub fitness: f64,
     pub dna: Vec<usize>, 
 }
@@ -17,12 +23,12 @@ pub struct Simulation {
 impl Simulation {
 
     pub fn new(iterations: usize,
-           crossover_probability: f64,
-           mutation_probability: f64,
-           population_size: usize,
-           cities: Vec<City>) -> Self {
+               crossover_probability: f64,
+               mutation_probability: f64,
+               population_size: usize,
+               cities: Vec<City>) -> Self {
 
-        assert_eq!(population_size % 2, 0, "population_size:{} should be an even number", population_size);
+        assert_eq!(population_size % 10, 0, "population_size:{} should be divisible by 10", population_size);
 
         let number_of_cities = cities.len();
         let number_of_mutations = 0;
@@ -45,7 +51,6 @@ impl Simulation {
     }
 
     fn generate_children(&mut self, mom: &Individual, dad: &Individual) -> (Individual, Individual) {
-
         if thread_rng().gen_bool(self.crossover_probability) {
             self.number_of_crossovers += 2;
             mom.cross_over(dad, &self.cities)
@@ -54,7 +59,7 @@ impl Simulation {
         }
     }
 
-    fn mutate_child(&mut self, child: &mut Individual) {
+    fn might_mutate_child(&mut self, child: &mut Individual) {
         if thread_rng().gen_bool(self.mutation_probability) {
             child.mutate(&self.cities);
             self.number_of_mutations += 1;
@@ -62,16 +67,17 @@ impl Simulation {
     }
 
     pub fn generate_population(&mut self, individuals: Vec<Individual>) -> Vec<Individual> {
+        assert_eq!(self.population_size % 2, 0, "population_size:{} should be divisible by 2", self.population_size);
         
         let cumulative_weights = get_cumulative_weights(&individuals);
         let mut next_population = Vec::new();
 
-        for _ in 0..(self.population_size / 2 ) { // Always even
+        for _ in 0..(self.population_size / 2 ) { // generate two individuals per iteration 
 
-            let (mom, dad) = generate_parents(&cumulative_weights, &individuals);
+            let (mom, dad) = select_parents(&cumulative_weights, &individuals);
             let (mut daughter, mut son) = self.generate_children(&mom, &dad);
-            self.mutate_child(&mut daughter);
-            self.mutate_child(&mut son);
+            self.might_mutate_child(&mut daughter);
+            self.might_mutate_child(&mut son);
 
             next_population.push(daughter);
             next_population.push(son);
@@ -79,7 +85,8 @@ impl Simulation {
         next_population
     }
 
-    pub fn run(&mut self, debug_level: usize) {
+    pub fn run(&mut self, debug_level: usize, skip: usize) {
+        assert!(skip > 0, "skip must be 1 or larger");
 
         let mut population = random_population(self.population_size, &self.cities);
         let mut champion = find_fittest(&population);
@@ -88,31 +95,30 @@ impl Simulation {
 
             let challenger = find_fittest(&population);
             population = self.generate_population(population);
-            debug_print(debug_level, i, &population, &champion, &challenger);
+            debug_print(debug_level, skip, i + 1, &population, &champion, &challenger, self.number_of_cities);
 
-            if champion.fitness < challenger.fitness {
+            if champion.fitness <= challenger.fitness {
                 champion = challenger;
             }
         }
 
         self.fitness = champion.fitness;
         self.dna = champion.dna;
+
         if debug_level >= 2 { self.print(); }
     }
 
     pub fn print(&self) {
 
-        println!("\n --------------- \n STATS \n --------------- \n");
+        let x = self.population_size * self.iterations;
 
+        println!("\n --------------- \n STATS \n --------------- \n");
         println!("BEST TRAVEL PATH: {:?}", self.dna);
         println!("Fitness Score: {} ", self.fitness);
-
-        let x = self.population_size * self.iterations;
         println!("{} mutations out of {} individuals produced", self.number_of_mutations, x);
         println!("{} cross-overs out of {} individuals produced", self.number_of_crossovers, x);
 
         println!("\n --------------- \n SPECS \n --------------- \n");
-
         println!("iterations: {:?}", self.iterations);
         println!("crossover_probability: {:?}", self.crossover_probability);
         println!("mutation_probability: {:?}", self.mutation_probability);
