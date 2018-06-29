@@ -5,3 +5,6 @@ authors = ["Mithi Sevilla <mithi.sevilla@gmail.com>"]
 
 [dependencies]
 rand = "0.5.2"
+
+[profile.dev]
+opt-level = 2
