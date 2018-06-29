@@ -1,6 +1,7 @@
 use rand::{thread_rng, Rng};
+use std::str::FromStr;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct City {
     id: usize,
     x: f64,
@@ -18,6 +19,23 @@ impl City {
         let d2 = self.y - other.y;
         d1 * d1 + d2 * d2
     }
+}
+
+pub fn string_to_cities(contents: &String) -> Vec<City> {
+    //TODO: Error handling: Unwrapping of line + expected # elements 
+    let mut cities: Vec<City> = Vec::new();
+
+    for (i, line) in contents.lines().enumerate() {
+
+        let values: Vec<f64> = line.split(',')
+                                   .map(|val| f64::from_str(val.trim())
+                                   .unwrap())
+                                   .collect();
+        
+        let c = City::new(i, values[1], values[2]);
+        cities.push(c);
+    }
+    cities
 }
 
 pub fn random_cities(n: usize, mn: f64, mx: f64) -> Vec<City> {
