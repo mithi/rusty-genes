@@ -1,9 +1,10 @@
 extern crate rand;
 
 use rand::{thread_rng, Rng};
-use std::fmt::Debug;
 
+pub mod examples; 
 pub mod city;
+pub mod helper;
 mod individual;
 mod simulation;
 
@@ -11,25 +12,15 @@ pub use city::City;
 pub use individual::Individual;
 pub use simulation::Simulation;
 
-pub fn print_vec<T: Debug>(v: &[T]) {
-    for i in v.iter() { println!("{:?}", i); }   
-}
-
-pub fn select_index(cumulative_weights: &[f64]) -> usize {
-    let w_sum = cumulative_weights.last().unwrap();
-    let r: f64 = thread_rng().gen_range(0.0, *w_sum);
-    cumulative_weights.iter().rposition(|&w| w < r).unwrap()
-}
-
 pub fn random_dna(n: usize) -> Vec<usize> {
     let mut v:Vec<usize> = (0..n).collect();
     thread_rng().shuffle(&mut v);
     v
 }
 
-pub fn generate_parents<'a>(w: &[f64], individuals: &'a [Individual]) -> (&'a Individual, &'a Individual) {
-    let mom_index = select_index(w);
-    let dad_index = select_index(w);  
+pub fn select_parents<'a>(w: &[f64], individuals: &'a [Individual]) -> (&'a Individual, &'a Individual) {
+    let mom_index = helper::select_index(w);
+    let dad_index = helper::select_index(w);  
     (&individuals[mom_index], &individuals[dad_index])
 }
 
