@@ -1,43 +1,25 @@
-# PLOT PLAYGROUND
-- A collection of jupyter notebooks where I play with interactive widgets paired with
-visualization libraries such as bokeh and plotly
+# VISUALIZATION AND ANIMATION
 
-# Get Started
+# Installation and launch
 
-1. Install Miniconda 
-2. Create environment
-
+## 1. [Install Miniconda](https://conda.io/docs/user-guide/install/index.html) 
+## 2. Create environment
 ```
 $ conda update conda
-$ conda create --name plot-playground 
-$ source activate plot-playground
-```
-3. Install Dependencies
-```
-$ conda install -c conda-forge ipywidgets
-$ conda install jupyter bokeh plotly numpy scipy pandas matplotlib seaborn  
-$ conda install -c menpo ffmpeg 
+$ conda create --name rusty-genes 
+$ source activate rusty-genes
+$ conda install jupyter bokeh numpy 
 ```
 
-4. Prettify with with custom CSS (Optional) 
-
-A. Custom CSS
+## 3. Prettify with with custom CSS (Optional) 
 ```
 $ cd ~/.jupyter/custom
 $ nano custom.css
-!copy paste the following from customCSS folder
+!copy paste the css file contents from customCSS folder
 ```
 
-B. Alternatively use Jupyter Themes
+## 4. Launch
 ```
-$ pip install cython
-$ pip install --upgrade pip
-$ pip install jupyterthemes
-$ pip install --upgrade jupyterthemes
-$ jt -t onedork -tf latosans -tfs 15 -lineh 170 -ofs 14
-```
-
-5. Launch
-```
+$ source activate rusty-genes
 $ jupyter notebook
 ```
