@@ -120,22 +120,41 @@ impl Simulation {
         println!("number_of_cities: {:?}", self.number_of_cities);
         println!("\n Cities: ");
         print_vec(&self.cities);
+
+        println!("\n --------------- \n END \n --------------- \n");
+
     }
 }
 
 fn debug_print(debug_level: usize, 
+               skip: usize, 
                i: usize, 
                population: &[Individual],
                champion: &Individual, 
-               challenger: &Individual) {
+               challenger: &Individual, 
+               n: usize) {
 
-    if debug_level >= 4 {
-        println!("\n --------------- \n {}: Current Population \n --------------- \n", i);
-        print_vec(population);
+    if debug_level == 1 && (i % skip == 0) {
+        print!("{}, {}, {}, {},", i, n, champion.fitness, challenger.fitness);
+
+        for i in 0..n {
+            print!(" {},", champion.dna[i]);
+        }
+
+        for i in 0..(n - 1) {
+            print!(" {},", challenger.dna[i]);
+        }
+
+        println!(" {}", challenger.dna[n - 1]);
     }
 
     if debug_level == 3 {
         println!("#{}: \n current_champion: {:?} \n challenger: {:?}", 
             i, champion, challenger);
+    }
+
+    if debug_level == 4 {
+        println!("\n --------------- \n {}: Current Population \n --------------- \n", i);
+        print_vec(population);
     }
 }
