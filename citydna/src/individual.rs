@@ -40,8 +40,7 @@ impl Individual {
 
 fn fitness(dna: &[usize], cities: &[City]) -> f64 {
     let d = dna.windows(2)
-               .fold(MIN_POSITIVE, |acc, w| acc + cities[w[0]]
-               .distance_squared(&cities[w[1]]));
+               .fold(MIN_POSITIVE, |acc, w| acc + cities[w[0]].distance_squared(&cities[w[1]]));
     1.0 / d
 }
 
