@@ -1,6 +1,6 @@
 # INTRODUCTION
 - An Rust implementation of a genetic algorithm to solve the traveling salesman problem with animated visualization (jupyter notebook)
-- See my Medium article for a more detailed discussion
+- [See my Medium article for a more detailed discussion](https://medium.com/@mithi/genetic-algorithms-in-rust-for-autonomous-agents-an-introduction-ac182de32aee)
 
 | ![](./docs/gif/simA.gif)      |   ![](./docs/gif/simB.gif)      |
 | ----------------------------- |:-------------------------------:|
