@@ -1,4 +1,7 @@
 # VISUALIZATION AND ANIMATION
+| ![](../docs/gif/simA.gif)      |   ![](../docs/gif/simB.gif)      |
+| ----------------------------- |:-------------------------------:|
+| ![](../docs/gif/simC.gif)      | ![](../docs/gif/sim0.gif)        |
 
 # Installation and launch
 
