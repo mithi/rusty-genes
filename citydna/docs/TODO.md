@@ -3,9 +3,9 @@
 - Error-handling of `helper::parse_specs`
 - Error-handling of `city::string_to_cities()`
 - Error-handling of `helper::select_index()`
-- Better `citydna::find_fittest()` function 
+- Other `citydna::find_fittest()` function 
+- Other `individual::mutate()` and `individual::cross_over()` strategies
 - Incorporate early-stopping
-- Experiment on other `individual.mutate()` strategies
 
 # FUTURE FEATURES (TODO)
 ## 1. RUN EXAMPLE FROM COMMAND LINE
