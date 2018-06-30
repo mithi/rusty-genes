@@ -25,3 +25,7 @@ citydna/data/cities/\.DS_Store
 citydna/data/output/\.DS_Store
 
 citydna/notebooks/\.DS_Store
+
+citydna/data/specs/\.DS_Store
+
+\.DS_Store
