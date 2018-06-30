@@ -2,8 +2,8 @@
 - An Rust implementation of a genetic algorithm to solve the traveling salesman problem with animated visualization (jupyter notebook)
 - See my Medium article for a more detailed discussion
 
-| ![](./docs/gif/simA.gif)      |   ![](./docs/gif/simB.gif)        |
-| ------------- |:-------------:|
+| ![](./docs/gif/simA.gif)      |   ![](./docs/gif/simB.gif)      |
+| ----------------------------- |:-------------------------------:|
 | ![](./docs/gif/simC.gif)      | ![](./docs/gif/sim0.gif)        |
 
 
@@ -18,14 +18,15 @@ $ cargo run ./data/specs/specs1.csv ./data/cities/cities0.csv
 ![](./docs/img/docs2.png)
 
 # SAMPLE USAGE, KNOWN ISSUES, AND FUTURE FEATURES
-- See `SAMPLECODE1.md` and `SAMPLECODE2.md` in `docs` directory for sample code
+- See [`SAMPLECODE1.md`](./docs/SAMPLECODE1.md) and [`SAMPLECODE2.md`](./docs/SAMPLECODE2.md) in [`docs`](./docs) 
+  directory for sample code
 - See `TODO.md` in `docs` directory for known issues and future features
 
 # JUPYTER NOTEBOOKS FOR SEMI RANDOM CITY GENERATION AND ANIMATED VISUALIZATION
 - **IMPORTANT**: When running the simulation:
   - Use `debug_level = 1` to generate output `csv` file compatible with the notebooks
 - To launch the notebooks, check this [how-to](./notebooks/README.md) to set up your conda environment
-- Launch a visual animation of the the search  with [`n1a-simple-example.ipynb`](./n1a-simple-example.ipynb)
+- Launch a visual animation of the the search  with [`n1-simple-example.ipynb`](./notebooks/n1a-simple-example.ipynb)
 - Create `csv` files of semi-random cities with [`n2-readwrite-csv.ipynb`](./notebooks/n2-readwrite-csv.ipynb)
 
 ![](./docs/gif/sim0.gif)
