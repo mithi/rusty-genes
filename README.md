@@ -1,4 +1,4 @@
-# Rusy Genes
+# Rusty Genes
 - Genetic algorithm implementations in Rust
 
 # 1. [Genetics Algorithm for Traveling Salesman Problem](./citydna/)
