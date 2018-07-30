@@ -29,3 +29,5 @@ citydna/notebooks/\.DS_Store
 citydna/data/specs/\.DS_Store
 
 \.DS_Store
+
+particlefilter/notebooks/\.ipynb_checkpoints/
