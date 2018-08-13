@@ -8,14 +8,25 @@
 | ----------------------------- |:-------------------------------:|
 | ![](./citydna/docs/gif/simC.gif)      | ![](./citydna/docs/gif/sim0.gif)        |
 
+# Work In Progress
+
+
+## 2. [Genetic Particle Filter](./particlefilter/)
+- K. S. P. J. H. KyungJin Rou, "A New Particle Filter Inspired by Biological Evolution: Genetic Filter," World Academy of Science, Engineering and Technology, no. 33, 2007.
+- See also [Particle Filter Prototype Repository](https://github.com/mithi/particle-filter-prototype)
+
+![](./particlefilter/vid/simple-global-plot.gif)
+
+| Perfect Observation | Noisy Observation |
+| ----------------------------- |:-------------------------------:|
+| ![](./particlefilter/vid/simple-vehicle-plot.gif) | ![](./particlefilter/vid/vehicle-plot-noisy.gif)|
+
+
 # Future Plans
 
-## 2. Tetris AI
+## 3. Tetris AI
 - [Siraj Raval, How to Make an Evolutionary Tetris AI](https://www.youtube.com/watch?v=xLHCMMGuN0Q)
 - [Yiyuan Lee / April 14, 2013](https://codemyroad.wordpress.com/2013/04/14/tetris-ai-the-near-perfect-player/)
-
-## 3. Genetic Particle Filter  
-- K. S. P. J. H. KyungJin Rou, "A New Particle Filter Inspired by Biological Evolution: Genetic Filter," World Academy of Science, Engineering and Technology, no. 33, 2007.
 
 ## 4. Knapsack and other bin-packing problems
 - [Knapsack Problems + Bin Packing ](https://www.wikiwand.com/en/Knapsack_problem)
