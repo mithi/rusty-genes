@@ -42,7 +42,10 @@ fn main() {
          iterations, 
          population_size,
          crossover_probability,
-         mutation_probability) = helper::parse_specs(&contents);
+         mutation_probability) = helper::parse_specs(&contents).unwrap_or_else(|err| {
+            eprintln!("{}", err);
+            process::exit(1);
+         });
 
     let contents = helper::read_file(&city_filename);
     let cities: Vec<City> = city::string_to_cities(&contents);
