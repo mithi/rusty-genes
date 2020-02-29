@@ -1,6 +1,0 @@
-[package]
-name = "particlefilter"
-version = "0.1.0"
-authors = ["Mithi Sevilla <mithi.sevilla@gmail.com>"]
-
-[dependencies]
