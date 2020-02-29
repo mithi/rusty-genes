@@ -11,6 +11,7 @@ $ cargo run ./data/specs/specs1.csv ./data/cities/cities0.csv
 # Simulation
 ```bash
 $ cargo run ./specs.csv ./cities.csv > ./output.csv
+$ cargo run ./data/specs/specsABC.csv ./data/cities/citiesA.csv > ./NEW_OUTPUT.csv
 
 # ------------
 # ./specs.csv
