@@ -93,8 +93,8 @@ impl Simulation {
 
         for i in 0..self.iterations {
 
-            let challenger = find_fittest(&population);
             population = self.generate_population(population);
+            let challenger = find_fittest(&population);
             debug_print(debug_level, skip, i + 1, &population, &champion, &challenger, self.number_of_cities);
 
             if champion.fitness <= challenger.fitness {
